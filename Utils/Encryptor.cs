@@ -270,6 +270,10 @@ public class Encryptor {
     }
 
     public static byte[] DecryptData(byte[] buffer) {
+        if (buffer.Length == 0) {
+            return new byte[]{};
+        }
+
         var key = GetEncryptKey(buffer[0]);
         var bufferBody = new byte[buffer.Length - 1];
         Array.Copy(buffer, 1, bufferBody, 0, buffer.Length - 1);
